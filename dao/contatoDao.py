@@ -1,7 +1,6 @@
 from database.database import Database
 import sqlite3
 
-
 class ContatoDao():
 
     def insere(self, contato):
@@ -11,5 +10,3 @@ class ContatoDao():
              values(?,?,?,?,?)'
         cur.execute(sql, (contato.getNome, contato.getCelular,
         contato.getTelefone, contato.getEmail, 1))
-
-

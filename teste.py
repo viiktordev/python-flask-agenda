@@ -1,6 +1,7 @@
 from database.database import Database
 from model.contato import Contato
 from dao.contatoDao import ContatoDao
+from model.endereco import Endereco
 
 db = Database()
 
@@ -23,3 +24,5 @@ try:
     conn.close()
 except Exception as e:
     print(e)
+
+end = Endereco('07124000', )
