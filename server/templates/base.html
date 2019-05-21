@@ -1,0 +1,15 @@
+<!doctype html>
+<title>Contatos</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<section class="container">
+    <h1>Contatos</h1>
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</section> 
