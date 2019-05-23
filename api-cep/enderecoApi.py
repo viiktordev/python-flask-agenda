@@ -11,7 +11,6 @@ def getEndereco(cep):
         return jsonify({'error':'formato de cep invalido'}),400
 
     endereco = buscaEndereco(cep)
-    if(1==0):
+    if('erro' in endereco):
         return jsonify({'error':'cep invalido'})
-    print(endereco)
     return jsonify(endereco)
