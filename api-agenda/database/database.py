@@ -10,7 +10,7 @@ class Database():
             cep text not null,\
             logradouro text,\
             bairro text,\
-            numero integer,\
+            numero text,\
             complemento text,\
             localidade text,\
             uf text);")

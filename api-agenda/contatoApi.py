@@ -9,3 +9,7 @@ contatoApp = Blueprint('contatoApp', __name__, template_folder='templates')
 def listar():
     lista = service_listar()
     return jsonify(lista)
+
+@contatoApp.route('/contato', mothods=['POST'])
+def cadastrar():
+    contato = request.get_json()

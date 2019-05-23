@@ -9,6 +9,12 @@ class Endereco():
         self.__localidade = localidade
         self.__uf = uf
 
+    def setId(self, idCont):
+        self.__idContato = idCont
+
+    def getIdContato(self):
+        return self.__idContato
+
     @staticmethod
     def cria(tupla):
         try:

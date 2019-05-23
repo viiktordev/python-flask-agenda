@@ -1,5 +1,6 @@
 from model.contato import Contato
 from dao.contatoDao import ContatoDao
+from dao.enderecoDAO import EnderecoDao
 
 def getAll():
     dao = ContatoDao()
@@ -10,6 +11,38 @@ def getAll():
 
     return listaContato
 
-def insere():
+def insere(contatoDados):
     dao = ContatoDao()
+    enderecoDao = EnderecoDao()
+
+    listaContato = [
+        '',
+        contatoDados['nome'],
+        contatoDados['celular'],
+        contatoDados['telefone'],
+        contatoDados['email'],
+        contatoDados['cep'],
+        contatoDados['logradouro'],
+        contatoDados['bairro'],
+        contatoDados['numero'],
+        contatoDados['complemento'],
+        contatoDados['localidade'],
+        contatoDados['uf']
+    ]
+    
+    contato = Contato.cria(listaContato)
+    endereco = contato.getEndereco()
+
+    idContato = dao.insere(contato)
+
+    endereco.setId(idContato)
+
+    idEndereco = enderecoDao.insere(endereco)
+
+    dao.updateIdEndereco(endereco,idEndereco)
+
+
+    print(getAll())
+
+    
     
