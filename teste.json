@@ -1,0 +1,1 @@
+{'id': 1, 'nome': 'victor', 'celular': '123', 'telefone': '456', 'email': 'teste@teste', 'endereco': {'id': 1, 'cep': '07124000', 'logradouro': 'rua 777', 'bairro': 'bairro 1', 'numero': 77, 'complemento': 'casa 7', 'localidade': 'sao paulo', 'uf': 'SP'}}

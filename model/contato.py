@@ -1,3 +1,4 @@
+from model.endereco import Endereco
 class Contato():
     def __init__(self, id, nome, celular = '', telefone = '', email = '', endereco = ''):
         self.__id = id
@@ -6,6 +7,30 @@ class Contato():
         self.__telefone = telefone
         self.__email = email
         self.__endereco = endereco
+
+    @staticmethod
+    def cria(tupla):
+        try:
+            id = tupla[0]
+            nome = tupla[1]
+            celular = tupla[2]
+            telefone = tupla[3]
+            email = tupla[4]
+            endereco = Endereco.cria([
+                tupla[0],
+                tupla[5],
+                tupla[6],
+                tupla[7],
+                tupla[8],
+                tupla[9],
+                tupla[10],
+                tupla[11]
+            ])
+            return Contato(id, nome, celular, telefone, email, endereco)
+        except Exception as e:
+            print("problema ao criar CONTATO - Erro: " + e.__str__())
+        
+
 
     def getAll(self):
         return({'id':self.__id,
@@ -34,11 +59,11 @@ class Contato():
         return self.__endereco
 
     def __dict__(self):
-        d = ditc()
+        d = dict()
         d["id"] = self.__id
         d["nome"] = self.__nome
         d["celular"] = self.__celular
         d["telefone"] = self.__telefone
         d["email"] = self.__email
-        d["endereco"] = self.__endereco
+        d["endereco"] = self.__endereco.__dict__()
         return d

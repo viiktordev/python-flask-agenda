@@ -8,4 +8,4 @@ contatoApp = Blueprint('contatoApp', __name__, template_folder='templates')
 @contatoApp.route('/contato', methods=['GET'])
 def listar():
     lista = service_listar()
-    return jsonify({'teste':'ok'})
+    return jsonify(lista)
