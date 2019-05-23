@@ -4,20 +4,19 @@ import json
 
 app = Flask(__name__)
 
+apiAgenda = 'http://localhost:5000/'
+apiCep = 'http://localhost:5002/'
+
 @app.route('/', methods=['GET', 'POST'])
 def contatos():
+    r = requests.get(apiAgenda+'contato')
+    msg = ""
+    if 'msg' in request.args:
+        msg = request.args["msg"]
 
-    r = requests.get('http://localhost:5000/contato')
-    
     data = json.loads(r.text)
 
-    print(data)
-    '''
-    if 'ctt' in request.args:
-        lol = json.loads(request.args['ctt'])
-        cont.append(lol)
-    '''
-    return render_template('contatos.html', contatos = data)
+    return render_template('contatos.html', contatos = data, msg = msg)
 
 @app.route('/criar', methods=['GET'])
 def criarContato():
@@ -26,13 +25,27 @@ def criarContato():
 
 @app.route('/editar/<int:id>', methods=['GET'])
 def editarContato(id):
-
-    r = requests.get('http://localhost:5000/contato')
+    r = requests.get(apiAgenda+'contato')
     
     data = json.loads(r.text)
     print(data[0])
     return render_template('editar.html', contato=data[0])
 
+@app.route('/salvar', methods=['POST'])
+def salvar():
+    nome = request.form['nome']
+    numero = request.form['numero']
+    email = request.form['email']
+    celular = request.form['celular']
+    #endereco
+    cep = request.form['cep']
+    bairro = request.form['bairro']
+    complemento = request.form['complemento']
+    localidade = request.form['localidade']
+    logradouro = request.form['logradouro']
+    uf = request.form['uf']
+    
+    return redirect(url_for('contatos', msg = "succ"))
 
 @app.route('/editar', methods=['POST'])
 def editar():
@@ -53,9 +66,11 @@ def editar():
 @app.route('/buscarCEP', methods=['POST'])
 def buscarCEP():
     cep = request.form['cep']
+    r = requests.get(apiCep+'endereco/'+cep)
 
-    print(cep)
-    return jsonify("{ success: true, cep: {cep} }")
+    data = json.loads(r.text)
+
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5001)

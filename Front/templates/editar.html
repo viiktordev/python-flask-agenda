@@ -32,12 +32,12 @@
                     <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" value="{{ contato.endereco.cep }}" />
                 </div>
                 <div class="form-group">
-                    <label>Bairro:</label>
-                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{ contato.endereco.bairro }}" />
-                </div>
-                <div class="form-group">
                     <label>complemento:</label>
                     <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" value="{{ contato.endereco.complemento }}" />
+                </div>
+                <div class="form-group">
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{ contato.endereco.bairro }}" />
                 </div>
                 <div class="form-group">
                     <label>localidade:</label>
@@ -81,6 +81,10 @@ async function enviarCodigoConfirmacao() {
         cache: false,
         success: function (data) {
             console.log(data);
+            $('#bairro').val(data.bairro)
+            $('#localidade').val(data.localidade)
+            $('#logradouro').val(data.logradouro)
+            $('#uf').val(data.uf)
         },
         error: function () {
             alert('Tivemos problemas ao enviar o e-mail, por favor tente novamente mais tarde.');
