@@ -1,15 +1,48 @@
 <!doctype html>
-<title>Contatos</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<section class="container">
-    <h1>Contatos</h1>
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-    <div class="content">
-        {% block content %}{% endblock %}
+<head>
+    <title>Contatos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row text-1 mt-2">
+                        <h2 class="text-muted">Meus Contatos</h2>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <nav class="navbar navbar-expand-lg navbar-light float-right mr-5">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item {% if request.path == '/' %} active {% endif %}">
+                                <a class="nav-link" href="/">Listar</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/criar' %} active {% endif %}">
+                                <a class="nav-link" href="/criar">Criar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+
+        
+        
+        <div class="row">
+            <div class="col-md-12">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
-</section> 
+    
+    
+    <footer class="text-center">This is a sample website that was created on December 19, 2015 by GidgetPINK</footer>
+</body>
