@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{{ url_for('editar') }}" method="post">
+        <div class="row">
+            <input type="hidden" name="id" value="{{ contato.id }}">
+            <div class="col-sm">
+                <p>Dados Pessoais</p>
+                <hr>
+                <div class="form-group">
+                    <label>Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="{{ contato.nome }}" />
+                </div>
+                <div class="form-group">
+                    <label>Telefone:</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" value="{{ contato.numero }}" />
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ contato.email }}" />
+                </div>
+                <div class="form-group">
+                    <label>celular:</label>
+                    <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular" value="{{ contato.celular }}" />
+                </div>
+            </div>
+            <div class="col-sm">
+                <p>Endereço</p>
+                <hr>
+                <div class="form-group">
+                    <label>CEP:</label>
+                    <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" value="{{ contato.endereco.cep }}" />
+                </div>
+                <div class="form-group">
+                    <label>Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="{{ contato.endereco.bairro }}" />
+                </div>
+                <div class="form-group">
+                    <label>complemento:</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" value="{{ contato.endereco.complemento }}" />
+                </div>
+                <div class="form-group">
+                    <label>localidade:</label>
+                    <input type="text" class="form-control" id="localidade" name="localidade" placeholder="Localidade" value="{{ contato.endereco.localidade }}" />
+                </div>
+                <div class="form-group">
+                    <label>logradouro:</label>
+                    <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro" value="{{ contato.endereco.logradouro }}" />
+                </div>
+                <div class="form-group">
+                    <label>numero:</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Numero" value="{{ contato.endereco.numero }}" />
+                </div>
+                <div class="form-group">
+                    <label>UF:</label>
+                    <input type="text" class="form-control" id="uf" name="UF" placeholder="UF" value="{{ contato.endereco.uf }}" />
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Salvar" class="btn btn-info">
+    </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$('#cep').focusout(function(){
+    enviarCodigoConfirmacao();
+});
+
+async function enviarCodigoConfirmacao() {
+    postData = {
+        cep: $('#cep').val()
+    };
+
+    await $.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: "{{ url_for('buscarCEP') }}",
+        data: postData,
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+            alert('Tivemos problemas ao enviar o e-mail, por favor tente novamente mais tarde.');
+        }
+    });
+}
+</script>
+{% endblock %}

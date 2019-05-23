@@ -1,10 +1,14 @@
 <!doctype html>
 <head>
     <title>Contatos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+    {% block modal %}
+    {% endblock %}
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -33,8 +37,6 @@
             </div>
         </div>
 
-        
-        
         <div class="row">
             <div class="col-md-12">
                 {% block content %}
@@ -44,5 +46,8 @@
     </div>
     
     
-    <footer class="text-center">This is a sample website that was created on December 19, 2015 by GidgetPINK</footer>
+    <footer class="text-center"></footer>
 </body>
+{% block scripts %}
+{% endblock %}
+</html>
