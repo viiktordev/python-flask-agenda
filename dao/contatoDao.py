@@ -2,6 +2,22 @@ from database.database import Database
 import sqlite3
 
 class ContatoDao():
+    @staticmethod
+    def getAll():
+        try:
+            conn = Database().conexao()
+            cur = conn.cursor()
+            sql = "SELECT contato.nome, endereco.logradouro\
+                FROM contato INNER JOIN endereco ON\
+                contato.idEndereco = endereco.id "
+            cur.execute(sql)
+            rows = cur.fetchall()
+            return rows
+        except Exception as e:
+            print("Erro - "+e.__str__())
+        finally:
+            cur.close()
+            conn.close()
 
     def insere(self, contato):
         try:
