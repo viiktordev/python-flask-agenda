@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, Blueprint, request
-from services.contatoService import getAll as service_listar
+from services.contatoService import getAll as service_listar, insere
 
 app = Flask(__name__)
 
@@ -12,4 +12,10 @@ def listar():
 
 @contatoApp.route('/contato', mothods=['POST'])
 def cadastrar():
-    contato = request.get_json()
+    try:
+        contato = request.get_json()
+        insere(contato)
+        return jsonify(service_listar())
+    except expression as identifier:
+        return ({'mensagem':'algo de errado não está certo'})
+    

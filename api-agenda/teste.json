@@ -1,1 +1,0 @@
-{'id': '', 'nome': 'vitor', 'celular': '132456', 'telefone': '987654', 'email': 'vitor@giganti', 'endereco': {'id': '', 'cep': '07124000', 'logradouro': 'rua teste', 'bairro': 'bairro teste', 'numero': '10', 'complemento': 'casa 2', 'localidade': 'Sao Paulo', 'uf': 'SP'}}
