@@ -33,16 +33,20 @@ def insere(contatoDados):
     contato = Contato.cria(listaContato)
     endereco = contato.getEndereco()
 
-    idContato = dao.insere(contato)
-
-    endereco.setId(idContato)
-
     idEndereco = enderecoDao.insere(endereco)
 
-    dao.updateIdEndereco(endereco,idEndereco)
+    contato.setEndereco(idEndereco)
+
+    print(dao.insere(contato))
+
+    #endereco.setId(idContato)
+
+    #idEndereco = enderecoDao.insere(endereco)
+
+    #dao.updateIdEndereco(endereco,idEndereco)
 
 
-    print(getAll())
+    #print(contato.__dict__())
 
     
     

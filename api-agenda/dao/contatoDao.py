@@ -49,9 +49,9 @@ class ContatoDao():
             sql = "UPDATE contato\
                 SET idEndereco = ?\
                 WHERE id = ?;"
-            cur.execute(sql, (idEndereco, endereco.getIdContato())
+            cur.execute(sql, (idEndereco, endereco.getIdContato()))
 
-            aux = cur.lastrowid
+            #aux = cur.lastrowid
             conn.commit()
         except expression as identifier:
             pass

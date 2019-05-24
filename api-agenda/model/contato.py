@@ -17,7 +17,7 @@ class Contato():
             telefone = tupla[3]
             email = tupla[4]
             endereco = Endereco.cria([
-                tupla[0],
+                '',
                 tupla[5],
                 tupla[6],
                 tupla[7],
@@ -57,6 +57,9 @@ class Contato():
     
     def getEndereco(self):
         return self.__endereco
+
+    def setEndereco(self, endereco):
+        self.__endereco = endereco
 
     def __dict__(self):
         d = dict()

@@ -1,16 +1,16 @@
 class Endereco():
-    def __init__(self, idContato, cep='', logradouro='', bairro='', numero='', complemento='', localidade='', uf=''):
-        self.__idContato = idContato
-        self.__cep = cep
-        self.__logradouro = logradouro
-        self.__bairro = bairro
-        self.__numero = numero
-        self.__complemento = complemento
-        self.__localidade = localidade
-        self.__uf = uf
+    def __init__(self, id, cep='', logradouro='', bairro='', numero='', complemento='', localidade='', uf=''):
+        self.id = id
+        self.cep = cep
+        self.logradouro = logradouro
+        self.bairro = bairro
+        self.numero = numero
+        self.complemento = complemento
+        self.localidade = localidade
+        self.uf = uf
 
-    def setId(self, idCont):
-        self.__idContato = idCont
+    def setId(self, id):
+        self.__id = id
 
     def getIdContato(self):
         return self.__idContato
@@ -18,7 +18,7 @@ class Endereco():
     @staticmethod
     def cria(tupla):
         try:
-            idContato = tupla[0]
+            id = tupla[0]
             cep = tupla[1]
             logradouro = tupla[2]
             bairro = tupla[3]
@@ -26,14 +26,14 @@ class Endereco():
             complemento = tupla[5]
             localidade = tupla[6]
             uf = tupla[7]
-            return Endereco(idContato, cep, logradouro, bairro, numero, complemento, localidade, uf)
+            return Endereco(id, cep, logradouro, bairro, numero, complemento, localidade, uf)
         except Exception as e:
             print("problema ao criar ENDERECO - Erro: " + e.__str__())
 
     
     def __dict__(self):
         d = dict()
-        d["id"] = self.__idContato
+        d["id"] = self.__id
         d["cep"] = self.__cep
         d["logradouro"] = self.__logradouro
         d["bairro"] = self.__bairro
